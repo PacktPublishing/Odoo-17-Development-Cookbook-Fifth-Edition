@@ -1,0 +1,78 @@
+<odoo>
+
+    <!-- Tree(list) View -->
+    <record id="view_hostel_tree_view" model="ir.ui.view">
+        <field name="name">hostel.hostel.tree.view</field>
+        <field name="model">hostel.hostel</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="hostel_code"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_hostel_form_view" model="ir.ui.view">
+        <field name="name">hostel.hostel.form.view</field>
+        <field name="model">hostel.hostel</field>
+        <field name="arch" type="xml">
+            <form string="Hostel">
+                <sheet>
+                    <div class="oe_title">
+                        <h3>
+                            <table>
+                                <tr>
+                                    <td style="padding-right:10px;"><field name="name" required="1" 
+                                    placeholder="Name" /></td>
+                                    <td style="padding-right:10px;"><field name="hostel_code" 
+                                    placeholder="Code" /></td>
+                                </tr>
+                            </table>
+                        </h3>
+                    </div>
+                    <group>
+                        <group>
+                            <label for="street" string="Address"/>
+                            <div class="o_address_format">
+                                <field name="street" placeholder="Street..." class="o_address_street"/>
+                                <field name="street2" placeholder="Street 2..." class="o_address_street"/>
+                            </div>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <!-- Search View -->
+    <record id="view_hostel_search_view" model="ir.ui.view">
+        <field name="name">Hostel Search</field>
+        <field name="model">hostel.hostel</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="hostel_code"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_hostel" model="ir.actions.act_window">
+        <field name="name">Hostel</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hostel.hostel</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Create Hostel.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="hostel_main_menu" name="Hostel" sequence="1"/>
+
+    <menuitem id="hostel_type_menu" name="Hostel" parent="hostel_main_menu" 
+        action="my_hostel.action_hostel" groups="my_hostel.group_hostel_manager" 
+        sequence="1"/>
+
+</odoo>
