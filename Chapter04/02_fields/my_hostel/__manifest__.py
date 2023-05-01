@@ -1,14 +1,12 @@
-# See LICENSE file for full copyright and licensing details.
-
 {
-    "name": "Hostel Management",
-    "summary": "Manage Hostel easily",
+    "name": "Hostel Management",  # Module title
+    "summary": "Manage Hostel easily",  # Module subtitle phrase
     "description": """
 Manage Hostel
 ==============
 Efficiently manage the entire residential facility in the school
-    """,
-    "version": "15.0.1.0.0",
+    """,  # Supports reStructuredText(RST) format (description is Deprecated)
+    "version": "16.0.1.0.0",
     "author": "Serpent Consulting Services Pvt. Ltd.",
     "category": "Tools",
     "website": "http://www.serpentcs.com",
@@ -17,8 +15,11 @@ Efficiently manage the entire residential facility in the school
     "data": [
         "security/hostel_security.xml",
         "security/ir.model.access.csv",
-        "views/hostel.xml"
+        "views/hostel.xml",
     ],
-    "demo": [],
+    # This demo data files will be loaded if db initialize with demo data (commented because file is not added in this example)
+    # 'demo': [
+    #     'demo.xml'
+    # ],
     "installable": True,
 }
