@@ -29,6 +29,9 @@
                             <group>
                                 <field name="room_id"/>
                                 <field name="status"/>
+                                <field name="admission_date"/>
+                                <field name="discharge_date"/>
+                                <field name="duration"/>
                             </group>
                         </group>
                     </sheet>

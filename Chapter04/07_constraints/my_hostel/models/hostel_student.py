@@ -6,7 +6,9 @@ class HostelStudent(models.Model):
     _description = "Hostel Student Information"
 
     name = fields.Char("Student Name")
-    stud_gender = fields.Char("Gender", help="Student gender")
+    gender = fields.Selection([("male", "Male"),
+        ("female", "Female"), ("other", "Other")],
+        string="Gender", help="Student gender")
     active = fields.Boolean("Active", default=True,
         help="Activate/Deactivate hostel record")
     room_id = fields.Many2one("hostel.room", "Room",
