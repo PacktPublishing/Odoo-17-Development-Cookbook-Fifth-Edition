@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="base.main_company" model="res.company">
+        <field name="name">Packt publishing</field>
+    </record>
+
+    <record id="author_hda" model="res.partner">
+        <field name="name">Husen Daudi</field>
+    </record>
+    <record id="author_jvo" model="res.partner">
+        <field name="name">Jay Vora</field>
+    </record>
+    <record id="author_vb" model="res.partner">
+        <field name="name">Vacha Bhatt</field>
+    </record>
+    <record id="author_jb" model="res.partner">
+        <field name="name">John Brunn</field>
+    </record>
+
+    <record id="hostel_room_1" model="hostel.room">
+        <field name="name">Hostel Room 01</field>
+        <field name="room_no">HR001</field>
+        <field name="member_ids" eval="[(6, 0, [ref('author_hda'),ref('author_jvo'),
+                                ref('author_vb'),
+                                ref('author_jb')])]" />
+    </record>
+
+</odoo>

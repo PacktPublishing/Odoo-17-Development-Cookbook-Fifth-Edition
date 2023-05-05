@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id='hostel_base_action' model='ir.actions.act_window'>
+        <field name="name">Hostel Room</field>
+        <field name="res_model">hostel.room</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="My Hostel" id="hostel_base_menu" />
+    <menuitem name="Rooms" id="hostel_room_menu" parent="hostel_base_menu" action="hostel_base_action"/>
+
+    <!-- Form View -->
+    <record id="hostel_room_view_form" model="ir.ui.view">
+        <field name="name">Hostel Room Form</field>
+        <field name="model">hostel.room</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="make_available" string="Make Available" type="object"/>
+                    <button name="make_closed"  string="Make Closed" type="object"/>
+                    <button name="log_all_room_members"  string="Log Members" type="object"/>
+                    <button name="create_categories" string="Create Categories" type="object"/>
+                    <button name="update_room_no" string="Update Room No" type="object"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <group>
+                    <group>
+                        <field name="name"/>
+                        <field name="room_no"/>
+                        <field name="allocation_date"/>
+                    </group>
+                    <group>
+                        <field name="description"/>
+                        <field name="member_ids" widget="many2many_tags"/>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree(list) View -->
+    <record id="hostel_room_view_tree" model="ir.ui.view">
+        <field name="name">Hostel Room List</field>
+        <field name="model">hostel.room</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="room_no"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="hostel_room_view_search" model="ir.ui.view">
+        <field name="name">Hostel Room Search</field>
+        <field name="model">hostel.room</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="room_no"/>
+                <field name="state"/>
+            </search>
+        </field>
+    </record>
+
+</odoo>
