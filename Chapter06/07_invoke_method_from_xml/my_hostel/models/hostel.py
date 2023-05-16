@@ -28,7 +28,7 @@ class HostelRoom(models.Model):
     cost_price = fields.Float('Room Cost')
 
     @api.model
-    def update_book_price(self, category, amount_to_increase):
+    def update_room_price(self, category, amount_to_increase):
         # NOTE: Real cases can be complex but here we just increase cost price by 10
         _logger.info('Method update_room_price called from XML')
         category_rooms = self.search([('category_id', '=', category.id)])
