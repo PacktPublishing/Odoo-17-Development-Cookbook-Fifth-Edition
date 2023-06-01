@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_hostel_room_form_inherit">
+        <field name="name">hostel.room.form</field>
+        <field name="model">hostel.room</field>
+        <field name="inherit_id" ref="my_hostel.view_hostel_room_form" />
+        <field name="arch" type="xml">
+            <field name="room_no" position="after">
+               <field name="category" widget="category_color"/>
+            </field>
+        </field>
+    </record>
+</odoo>

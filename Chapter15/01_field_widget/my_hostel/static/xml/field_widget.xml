@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="CategColorField" owl="1">
+        <div>
+            <t t-foreach="totalColors" t-as="color" t-key="color">
+                <span t-attf-class="o_color_pill o_color_#{color} 
+                      {{props.value == color ? 'active': ''}}" 
+                      t-att-data-value="color"
+                      t-on-click="clickPill"/>
+            </t>
+            <div class="categInformationPanel"/>
+        </div>
+    </t>
+</templates>

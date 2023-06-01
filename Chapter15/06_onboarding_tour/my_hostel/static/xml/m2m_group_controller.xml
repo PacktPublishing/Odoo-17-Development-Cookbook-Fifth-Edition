@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="M2mGroupView" owl="1">
+        <div t-att-class="props.className" t-ref="root">
+            <Layout  display="props.display">
+                <t t-set-slot="layout-buttons">
+                    <t t-call="{{ props.buttonTemplate }}"/>
+                </t>
+                <div>
+                    <t t-component="props.Renderer" 
+                       model="model"
+                       onClickViewButton="group => this._onBtnClicked(group)"/>
+                </div>
+            </Layout>
+        </div>
+    </t>
+</templates>

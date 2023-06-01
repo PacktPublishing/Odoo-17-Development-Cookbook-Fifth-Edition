@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_hostel_student_m2m_group" model="ir.ui.view">
+        <field name="name">Students</field>
+        <field name="model">hostel.student</field>
+        <field name="arch" type="xml">
+            <m2m_group m2m_field="room_id">
+            </m2m_group>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_hostel_student">
+        <field name="name">Students</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hostel.student</field>
+        <field name="view_mode">tree,m2m_group,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Create Student.
+            </p>
+        </field>
+    </record>
+</odoo>
