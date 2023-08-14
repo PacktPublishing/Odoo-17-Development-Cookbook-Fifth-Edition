@@ -18,7 +18,11 @@
 
     # Views
     'data': [
+        "security/hostel_security.xml",
+        "security/ir.model.access.csv",
+        "views/hostel.xml",
         "views/hostel_room.xml",
+        "views/hostel_student.xml",
     ],
 
     # Technical
