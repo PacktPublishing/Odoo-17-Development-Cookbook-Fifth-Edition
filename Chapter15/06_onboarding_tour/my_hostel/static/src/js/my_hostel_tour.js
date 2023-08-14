@@ -10,7 +10,7 @@ odoo.define('my_hostel.tour', function(require) {
         rainbowMan: false,
         sequence: 5,
     }, [tour.stepUtils.showAppsMenuItem(), {
-        trigger: '.o_app[data-menu-xmlid="sale.sale_menu_root"]',
+        trigger: '.o_app[data-menu-xmlid="my_hostel.hostel_main_menu"]',
         content: Markup(_t("Ready to launch your <b>hostel</b>?")),
         position: 'bottom',
     },{
