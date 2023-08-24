@@ -5,13 +5,13 @@
     'description': """
 Long description
     """,  # Supports reStructuredText(RST) format
-    "version": "15.0.1.0.0",
+    "version": "16.0.1.0.0",
     "author": "Serpent Consulting Services Pvt. Ltd.",
     "category": "Uncategorized",
     "website": "http://www.serpentcs.com",
     "depends": ['base'],
     "license": "AGPL-3",
     'data': [
-        'views/my_hostel.xml',
+        'views/hostel_room.xml',
     ],
 }

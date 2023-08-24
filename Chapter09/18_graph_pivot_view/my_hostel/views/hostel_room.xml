@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Form View -->
+    <record id="hostel_room_view_form" model="ir.ui.view">
+        <field name="name">Hostel Room Form</field>
+        <field name="model">hostel.room</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <header>
+                        <button name="make_available" string="Make Available" type="object"/>
+                        <button name="make_closed"  string="Make Closed" type="object"/>
+                        <button type="action" name="%(my_hostel.hostel_room_category_action)d" string="Open Hotel Room Category" />
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <group string="Content" name="my_content">
+                        <group>
+                            <field name="name" />
+                            <field name="room_no"/>
+                        </group>
+                        <group>
+                            <field name="description"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Other Information" name="other_information">
+                            <field name="other_info" widget="html"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="o_attachment_preview" attrs="{'invisible': [('state', '!=', 'draft')]}" />
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree(list) View -->
+    <record id="hostel_room_view_tree" model="ir.ui.view">
+        <field name="name">Hostel Room List</field>
+        <field name="model">hostel.room</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="room_no"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Search view -->
+    <record id="hostel_room_view_search" model="ir.ui.view">
+        <field name="model">hostel.room</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="room_no"/>
+                <field name="state"/>
+                <searchpanel>
+                    <field name="state" expand="1" select="multi" icon="fa-check-square-o" enable_counters="1"/>
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_hostel_room" model="ir.actions.act_window">
+        <field name="name">All Hostel Room</field>
+        <field name="res_model">hostel.room</field>
+        <field name="search_view_id" ref="hostel_room_view_search" />
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'tree_view_ref': 'my_hostel.hostel_room_view_tree', 'lang': 'fr_FR','default_lang': 'fr_FR', 'active_test': False, 'default_room_rating': 1.0}</field>
+        <field name="domain">[('state', 'in', ['draft', 'available'])]</field>
+    </record>
+
+    <record id="action_hostel_room_tree" model="ir.actions.act_window.view">
+        <field name="act_window_id" ref="action_hostel_room" />
+        <field name="view_id" ref="hostel_room_view_tree" />
+        <field name="view_mode">tree</field>
+        <field name="sequence" eval="1"/>
+    </record>
+
+    <record id="action_hostel_room_form" model="ir.actions.act_window.view">
+        <field name="act_window_id" ref="action_hostel_room" />
+        <field name="view_id" ref="hostel_room_view_form" />
+        <field name="view_mode">form</field>
+        <field name="sequence" eval="2"/>
+    </record>
+
+    <menuitem id="menu_all_hostel_room" parent="menu_custom_hostel_room" action="action_hostel_room" sequence="10" groups="" />
+
+</odoo>

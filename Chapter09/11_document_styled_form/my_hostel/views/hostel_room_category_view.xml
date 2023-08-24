@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id='hostel_room_category_action' model='ir.actions.act_window'>
+        <field name="name">Hostel Room Categories</field>
+        <field name="res_model">hostel.room.category</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_custom_hostel_room" name="Hostel Room" web_icon="my_module,static/description/icon.png"/>
+    <menuitem name="Hostel Room Categories" id="hostel_room_category_menu" parent="menu_custom_hostel_room" action="hostel_room_category_action"/>
+
+    <!-- Form View -->
+    <record id="hostel_room_category_view_form" model="ir.ui.view">
+        <field name="name">Hostel Room Categories Form</field>
+        <field name="model">hostel.room.category</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button type="object" class="oe_stat_button" icon="fa-pencil-square-o" name="action_open_related_hostel_room">
+                            <div class="o_form_field o_stat_info">
+                                <span class="o_stat_value">
+                                    <field name="related_hostel_room"/>
+                                </span>
+                                <span class="o_stat_text">Hostel Room</span>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="description"/>
+                        </group>
+                        <group>
+                            <field name="parent_id"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="child_ids"/>
+                        <field name="hoste_room_ids" widget="many2many_tags"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree(list) View -->
+    <record id="hostel_room_category_view_tree" model="ir.ui.view">
+        <field name="name">Hostel Room List</field>
+        <field name="model">hostel.room.category</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+</odoo>

@@ -5,7 +5,7 @@
     'description': """
 Long description
     """,  # Supports reStructuredText(RST) format
-    "version": "15.0.1.0.0",
+    "version": "16.0.1.0.0",
     "author": "Serpent Consulting Services Pvt. Ltd.",
     "category": "Uncategorized",
     "website": "http://www.serpentcs.com",
@@ -14,6 +14,6 @@ Long description
     'data': [
         'security/groups.xml',
         'security/ir.model.access.csv',
-        'views/my_hostel.xml',
+        'views/hostel_room.xml',
     ],
 }
