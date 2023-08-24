@@ -11,7 +11,7 @@ Description related to Hostel.
     "category": "Tools",
     "website": "http://www.serpentcs.com",
     "depends": ['base'],
-    "license": "LGPL-3",
+    "license": "AGPL-3",
     'data': [
         'security/groups.xml',
         'security/ir.model.access.csv',

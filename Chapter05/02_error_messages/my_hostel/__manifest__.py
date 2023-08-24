@@ -7,12 +7,12 @@ Manage Library
 ==============
 Description related to Hostel.
     """,  # Supports reStructuredText(RST) format
-    "version": "15.0.1.0.0",
+    "version": "16.0.1.0.0",
     "author": "Serpent Consulting Services Pvt. Ltd.",
     "category": "Tools",
     "website": "http://www.serpentcs.com",
     "depends": ['base'],
-    "license": "LGPL-3",
+    "license": "AGPL-3",
     'data': [
         'security/groups.xml',
         'security/ir.model.access.csv',
