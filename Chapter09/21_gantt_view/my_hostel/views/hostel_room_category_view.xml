@@ -148,7 +148,7 @@
         <field name="name">Hostel Room Categories Gantt</field>
         <field name="model">hostel.room.category</field>
         <field name="arch" type="xml">
-            <gantt date_start="date_assign" date_stop="date_end" string="Tasks" default_group_by="parent_id" color="parent_id">
+            <gantt date_start="date_assign" date_stop="date_end" string="Hostel Room Category" default_group_by="parent_id" color="parent_id">
                 <field name="name"/>
                 <field name="parent_id"/>
                 <templates>

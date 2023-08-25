@@ -41,6 +41,7 @@
             <xpath expr="//group[@name='my_content']/group" position="after">
                 <group>
                     <field name="description"/>
+                    <field name="room_rating"/>
                 </group>
             </xpath>
         </field>
@@ -53,14 +54,26 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
-                <field name="room_no"/>
                 <field name="state"/>
             </tree>
         </field>
     </record>
 
+    <!-- Inherit Tree(list) View -->
+    <record id="hostel_room_view_tree_inherit" model="ir.ui.view">
+        <field name="name">Hostel Room List Inherit</field>
+        <field name="model">hostel.room</field>
+        <field name="inherit_id" ref="my_hostel.hostel_room_view_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="room_no"/>
+            </xpath>
+        </field>
+    </record>
+
     <!-- Search view -->
     <record id="hostel_room_view_search" model="ir.ui.view">
+        <field name="name">Hostel Room Search</field>
         <field name="model">hostel.room</field>
         <field name="arch" type="xml">
             <search>
@@ -71,6 +84,18 @@
                     <field name="state" expand="1" select="multi" icon="fa-check-square-o" enable_counters="1"/>
                 </searchpanel>
             </search>
+        </field>
+    </record>
+
+    <!-- Inherit Search view-->
+    <record id="hostel_room_view_search_inherit" model="ir.ui.view">
+        <field name="name">Hostel Room Search inherit</field>
+        <field name="model">hostel.room</field>
+        <field name="inherit_id" ref="my_hostel.hostel_room_view_search" />
+        <field name="arch" type="xml">
+            <xpath expr="." position="inside">
+                <field name="room_rating"></field>
+            </xpath>
         </field>
     </record>
 

@@ -18,6 +18,7 @@
             <kanban class="o_kanban_mobile" sample="1">
                 <field name="name"/>
                 <field name="description"/>
+                <field name="parent_id"/>
                 <templates>
                     <t t-name="kanban-box">
                         <div t-attf-class="oe_kanban_global_click">

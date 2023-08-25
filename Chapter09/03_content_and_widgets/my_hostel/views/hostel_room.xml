@@ -14,13 +14,11 @@
                         <field name="state" widget="statusbar"/>
                     </header>
                     <group string="Content" name="my_content">
-                        <group>
-                            <field name="name"/>
-                            <field name="room_no"/>
-                        </group>
-                        <group>
-                            <field name="description"/>
-                        </group>
+                        <field name="name"/>
+                        <field name="room_no"/>
+                    </group>
+                    <group>
+                        <field name="description"/>
                     </group>
                     <notebook>
                         <page string="Other Information" name="other_information">

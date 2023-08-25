@@ -78,6 +78,9 @@
                             <field name="date_assign"/>
                             <field name="date_end"/>
                         </group>
+                        <group>
+                            <field name="address"/>
+                        </group>
                     </group>
                     <group>
                         <field name="child_ids" attrs="{

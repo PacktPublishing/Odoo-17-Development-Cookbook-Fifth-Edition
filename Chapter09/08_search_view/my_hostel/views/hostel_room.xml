@@ -53,7 +53,9 @@
             <search>
                 <field name="name"/>
                 <field name="room_no"/>
-                <field name="state"/>
+                <group expand="0" string="Group By">
+                    <filter string="State" name="state" context="{'group_by':'state'}"/>
+               </group>
             </search>
         </field>
     </record>

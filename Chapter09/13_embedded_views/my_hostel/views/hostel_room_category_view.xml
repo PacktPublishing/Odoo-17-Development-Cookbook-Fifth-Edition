@@ -53,7 +53,7 @@
                             <form>
                                 <sheet>
                                     <group>
-                                        <field name="name" />
+                                        <field name="name"/>
                                         <field name="room_no"/>
                                     </group>
                                 </sheet>
