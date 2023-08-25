@@ -10,7 +10,6 @@ class TestHostelRoomState(TransactionCase):
         self.member_ids = self.env['hostel.room.member'].create([
             {'partner_id': self.partner_nikul.id, 'member_number': '007'},
             {'partner_id': self.partner_deepak.id, 'member_number': '357'}])
-        print('\n\n\n callll', [(6, 0, self.member_ids.ids)])
         self.test_hostel_room = self.env['hostel.room'].create({
             'name': 'Hostel Room 01',
             'room_no': '1',
