@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id='hostel_room_stages_action' model='ir.actions.act_window'>
+        <field name="name">Hostel room stages</field>
+        <field name="res_model">hostel.room.stage</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Hostel room stages" id="hostel_room_stages_menu"
+    parent="my_hostel.hostel_configuration" action="hostel_room_stages_action"/>
+
+    <!-- Form View -->
+    <record id="hostel_room_stages_view_form" model="ir.ui.view">
+        <field name="name">Hostel room stages Form</field>
+        <field name="model">hostel.room.stage</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="name"/>
+                        <field name="sequence"/>
+                    </group>
+                    <group>
+                        <field name="fold"/>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+
+     <!-- Tree(list) View -->
+    <record id="hostel_room_stages_view_tree" model="ir.ui.view">
+        <field name="name">Hostel room stages List</field>
+        <field name="model">hostel.room.stage</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+</odoo>
