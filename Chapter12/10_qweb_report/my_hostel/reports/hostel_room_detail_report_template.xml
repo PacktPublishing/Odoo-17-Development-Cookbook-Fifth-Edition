@@ -6,7 +6,7 @@
             <t t-call="web.internal_layout">
                 <div class="page">
                     <h1>Room name: <t t-esc="doc.name"/></h1>
-                    <h1>Room No: <t t-esc="doc.name"/></h1>
+                    <h1>Room No: <t t-esc="doc.room_no"/></h1>
                     <table class="table table-condensed">
                         <thead>
                             <tr>
