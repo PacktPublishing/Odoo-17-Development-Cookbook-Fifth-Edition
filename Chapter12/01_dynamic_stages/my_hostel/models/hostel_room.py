@@ -1,4 +1,5 @@
 from odoo import fields, models, api, _
+from odoo.exceptions import ValidationError
 
 
 class HostelRoom(models.Model):
@@ -49,7 +50,7 @@ class HostelRoom(models.Model):
             raise ValidationError(_("Rent Amount Per Month should not be a negative value!"))
 
 
-class LibraryRentStage(models.Model):
+class HostelRoomStage(models.Model):
     _name = 'hostel.room.stage'
     _order = 'sequence,name'
 

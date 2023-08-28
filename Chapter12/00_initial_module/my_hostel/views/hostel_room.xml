@@ -18,6 +18,9 @@
             <field name="model">hostel.room</field>
             <field name="arch" type="xml">
                 <form string="Room">
+                    <header>
+                        <field name="stage" widget="statusbar" statusbar_visible="draft,availabil"/>
+                    </header>
                     <sheet>
                         <group>
                             <group>

@@ -9,6 +9,7 @@
                     <field name="name"/>
                     <field name="room_no"/>
                     <field name="floor_no"/>
+                    <field name="stage_id"/>
                 </tree>
             </field>
         </record>
