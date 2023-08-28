@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
-from odoo import api, fields, models
+from odoo import api, fields, models, _
 from odoo.exceptions import UserError
-from odoo.tools.translate import _
 
 
 class HostelRoom(models.Model):

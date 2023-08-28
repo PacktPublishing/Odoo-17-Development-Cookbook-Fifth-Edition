@@ -9,7 +9,7 @@ Long description
     "author": "Serpent Consulting Services Pvt. Ltd.",
     "category": "Uncategorized",
     "website": "http://www.serpentcs.com",
-    "depends": ['base', 'mail'],
+    "depends": ['mail'],
     "license": "AGPL-3",
     'data': [
         'security/groups.xml',

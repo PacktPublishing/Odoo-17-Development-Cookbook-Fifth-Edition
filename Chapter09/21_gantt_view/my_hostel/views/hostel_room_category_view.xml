@@ -7,7 +7,7 @@
         <field name="view_mode">tree,kanban,calendar,graph,pivot,cohort,gantt,form</field>
     </record>
 
-    <menuitem id="menu_custom_hostel_room" name="Hostel Room" web_icon="my_module,static/description/icon.png"/>
+    <menuitem id="menu_custom_hostel_room" name="Hostel Room" web_icon="my_hostel,static/description/icon.png"/>
     <menuitem name="Hostel Room Categories" id="hostel_room_category_menu" parent="menu_custom_hostel_room" action="hostel_room_category_action"/>
 
     <!-- Kanban View -->
