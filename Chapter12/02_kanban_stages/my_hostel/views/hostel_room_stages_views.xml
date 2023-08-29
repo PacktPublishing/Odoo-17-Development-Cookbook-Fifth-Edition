@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
     <record id='hostel_room_stages_action' model='ir.actions.act_window'>
         <field name="name">Hostel room stages</field>
         <field name="res_model">hostel.room.stage</field>
@@ -39,5 +38,4 @@
             </tree>
         </field>
     </record>
-
 </odoo>
