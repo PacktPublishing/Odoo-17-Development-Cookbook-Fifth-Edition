@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_hostel_room_tree" model="ir.ui.view">
+            <field name="name">hostel.room.tree</field>
+            <field name="model">hostel.room</field>
+            <field name="arch" type="xml">
+                <tree string="Room">
+                    <field name="name"/>
+                    <field name="room_no"/>
+                    <field name="floor_no"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_hostel_room_form" model="ir.ui.view">
+            <field name="name">hostel.room.form</field>
+            <field name="model">hostel.room</field>
+            <field name="arch" type="xml">
+                <form string="Room">
+                    <header>
+                        <button name="action_remove_room_members"
+                            string="Remove Room Members"
+                            type="object"
+                            class="btn-primary"
+                        />
+                        <button name="action_category_with_amount"
+                            string="Log Category With Amount"
+                            type="object"
+                            class="btn-primary"
+                        />
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="room_no"/>
+                                <field name="hostel_id" required="1"/>
+                                <field name="floor_no"/>
+                                <field name="room_category_id"/>
+                            </group>
+                            <group>
+                                <field name="student_per_room" required="1"/>
+                                <field name="availability"/>
+                                <field name="rent_amount"/>
+                                <field name="currency_id"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="room_studnets" string="Studnets">
+                                <field name="student_ids"/>
+                            </page>
+                            <page name="hostel_amenities" string="Room Amenities">
+                                <group>
+                                    <field name="hostel_amenities_ids" widget="many2many_tags"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_hostel_room">
+            <field name="name">Room</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hostel.room</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+             <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Create Room.
+                </p>
+             </field>
+        </record>
+
+        <menuitem id="hostel_room_menu" name="Hostel Room" parent="my_hostel.hostel_main_menu" 
+            action="my_hostel.action_hostel_room" groups="my_hostel.group_hostel_manager" 
+            sequence="2"/>
+
+    </data>
+</odoo>

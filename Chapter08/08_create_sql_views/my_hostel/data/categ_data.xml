@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="single_room_categ" model="hostel.room.category">
+        <field name="name">Single Room</field>
+        <field name="amount">3000</field>
+    </record>
+
+    <record id="twin_sharing_room_categ" model="hostel.room.category">
+        <field name="name">Twin Sharing Room</field>
+        <field name="amount">2500</field>
+    </record>
+
+    <record id="triple_sharing_room_categ" model="hostel.room.category">
+        <field name="name">Triple Sharing Room</field>
+        <field name="amount">2000</field>
+    </record>
+
+</odoo>
