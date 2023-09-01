@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="101_room" model="hostel.room">
+        <field name="name">Room A-101</field>
+        <field name="room_no">101</field>
+        <field name="floor_no">1</field>
+        <field name="student_per_room">2</field>
+    </record>
+
+    <record id="102_room" model="hostel.room">
+        <field name="name">Room A-102</field>
+        <field name="room_no">102</field>
+        <field name="floor_no">1</field>
+        <field name="student_per_room">2</field>
+    </record>
+
+</odoo>
