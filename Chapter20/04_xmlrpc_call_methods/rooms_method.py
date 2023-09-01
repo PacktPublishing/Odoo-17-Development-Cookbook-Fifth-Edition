@@ -19,8 +19,8 @@ if user_id:
             'room_no': '35',
             'state': 'draft'
         }])
-    print('\n\n\n room_id',room_id)
     # Call make_available method on new room
+    
     models.execute_kw(db_name, user_id, password,
         'hostel.room', 'make_available',
         [[room_id]])

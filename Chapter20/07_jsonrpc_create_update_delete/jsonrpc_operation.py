@@ -3,8 +3,8 @@ import random
 import requests
 
 
-server_url = 'http://localhost:8069'
-db_name = 'book-db-14'
+server_url = 'http://localhost:8016'
+db_name = 'cookbook_16e'
 username = 'admin'
 password = 'admin'
 
@@ -30,30 +30,30 @@ response = requests.post(json_endpoint, data=payload, headers=headers)
 user_id = response.json()['result']
 
 if user_id:
-    # creates the books records
+    # creates the room's records
     create_data = [
-        {'name': 'Book 1', 'date_release': '2019-01-26'},
-        {'name': 'Book 3', 'date_release': '2019-02-12'},
-        {'name': 'Book 5', 'date_release': '2019-05-08'},
-        {'name': 'Book 7', 'date_release': '2019-05-14'}
+        {'name': 'Room 1', 'room_no': '201'},
+        {'name': 'Room 3', 'room_no': '202'},
+        {'name': 'Room 5', 'room_no': '205'},
+        {'name': 'Room 7', 'room_no': '207'}
     ]
-    payload = get_json_payload("object", "execute_kw", db_name, user_id, password, 'library.book', 'create', [create_data])
+    payload = get_json_payload("object", "execute_kw", db_name, user_id, password, 'hostel.room', 'create', [create_data])
     res = requests.post(json_endpoint, data=payload, headers=headers).json()
-    print("Books created:", res)
-    books_ids = res['result']
+    print("Rooms created:", res)
+    rooms_ids = res['result']
 
-    # Write in existing book record
-    book_to_write = books_ids[1]  # We will use ids of recently created books
-    write_data = {'name': 'Book 2'}
-    payload = get_json_payload("object", "execute_kw", db_name, user_id, password, 'library.book', 'write', [book_to_write, write_data])
+    # Write in existing room record
+    room_to_write = rooms_ids[1]  # We will use ids of recently created rooms
+    write_data = {'name': 'Room 2'}
+    payload = get_json_payload("object", "execute_kw", db_name, user_id, password, 'hostel.room', 'write', [room_to_write, write_data])
     res = requests.post(json_endpoint, data=payload, headers=headers).json()
-    print("Books written:", res)
+    print("Rooms written:", res)
 
-    # Delete in existing book record
-    book_to_unlink = books_ids[2:]  # We will use ids of recently created books
-    payload = get_json_payload("object", "execute_kw", db_name, user_id, password, 'library.book', 'unlink', [book_to_unlink])
+    # Delete in existing room record
+    room_to_unlink = rooms_ids[2:]  # We will use ids of recently created rooms
+    payload = get_json_payload("object", "execute_kw", db_name, user_id, password, 'hostel.room', 'unlink', [room_to_unlink])
     res = requests.post(json_endpoint, data=payload, headers=headers).json()
-    print("Books deleted:", res)
+    print("Rooms deleted:", res)
 
 else:
     print("Failed: wrong credentials")

@@ -3,8 +3,8 @@ import random
 import requests
 
 
-server_url = 'http://localhost:8069'
-db_name = 'book-db-14'
+server_url = 'http://localhost:8016'
+db_name = 'cookbook_16e'
 username = 'admin'
 password = 'admin'
 
@@ -30,26 +30,30 @@ response = requests.post(json_endpoint, data=payload, headers=headers)
 user_id = response.json()['result']
 
 if user_id:
-    # Create the book in draft state
+    # Create the room record in draft state
     payload = get_json_payload("object", "execute_kw",
         db_name, user_id, password,
-        'library.book', 'create', [{'name': 'Book 1', 'state': 'draft'}])
+        'hostel.room', 'create', [{
+            'name': 'Room 1',
+            'room_no': '101',
+            'state': 'draft'
+        }])
     res = requests.post(json_endpoint, data=payload, headers=headers).json()
-    print("Book created with id:", res['result'])
-    book_id = res['result']
+    print("Room created with id:", res['result'])
+    room_id = res['result']
 
-    # Change the book state by calling make_available method
+    # Change the room state by calling make_available method
     payload = get_json_payload("object", "execute_kw",
         db_name, user_id, password,
-        'library.book', 'make_available', [book_id])
+        'hostel.room', 'make_available', [room_id])
     res = requests.post(json_endpoint, data=payload, headers=headers).json()
 
-    # Check the book status after method call
+    # Check the room status after method call
     payload = get_json_payload("object", "execute_kw",
         db_name, user_id, password,
-        'library.book', 'read', [book_id, ['name', 'state']])
+        'hostel.room', 'read', [room_id, ['name', 'state']])
     res = requests.post(json_endpoint, data=payload, headers=headers).json()
-    print("Book state after the method call:", res['result'])
+    print("Room state after the method call:", res['result'])
 
 else:
     print("Failed: wrong credentials")

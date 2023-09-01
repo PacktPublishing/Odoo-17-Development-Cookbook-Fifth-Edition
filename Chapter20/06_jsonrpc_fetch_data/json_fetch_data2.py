@@ -3,8 +3,8 @@ import random
 import requests
 
 
-server_url = 'http://localhost:8069'
-db_name = 'book-db-14'
+server_url = 'http://localhost:8016'
+db_name = 'cookbook_16e'
 username = 'admin'
 password = 'admin'
 
@@ -30,12 +30,12 @@ response = requests.post(json_endpoint, data=payload, headers=headers)
 user_id = response.json()['result']
 
 if user_id:
-    # search for the books ids
-    search_domain = ['|', ['name', 'ilike', 'odoo'], ['name', 'ilike', 'sql']]
+    # search for the room's ids
+    search_domain = [['name', 'ilike', 'Standard']]
     payload = get_json_payload("object", "execute_kw",
         db_name, user_id, password,
-        'library.book', 'search_read', [search_domain, ['name', 'date_release']], {'limit': 5})
+        'hostel.room', 'search_read', [search_domain, ['name', 'room_no']], {'limit': 5})
     res = requests.post(json_endpoint, data=payload, headers=headers).json()
-    print('Books data:', res)
+    print('Rooms data:', res)
 else:
     print("Failed: wrong credentials")

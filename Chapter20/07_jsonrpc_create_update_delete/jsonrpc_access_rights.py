@@ -3,8 +3,8 @@ import random
 import requests
 
 
-server_url = 'http://localhost:8069'
-db_name = 'book-db-14'
+server_url = 'http://localhost:8016'
+db_name = 'cookbook_16e'
 username = 'admin'
 password = 'admin'
 
@@ -32,7 +32,7 @@ user_id = response.json()['result']
 if user_id:
     payload = get_json_payload("object", "execute_kw",
         db_name, user_id, password,
-        'library.book', 'check_access_rights', ['create'])
+        'hostel.room', 'check_access_rights', ['create'])
     res = requests.post(json_endpoint, data=payload, headers=headers).json()
     print("Has create access:", res['result'])
 
