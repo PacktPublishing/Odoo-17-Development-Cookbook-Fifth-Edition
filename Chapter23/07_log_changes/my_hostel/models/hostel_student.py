@@ -79,8 +79,7 @@ class HostelStudent(models.Model):
         self.message_post_with_template(template_id.id)
 
     def send_mail_assign_room_qweb(self):
-        self.message_post_with_view('my_hostel.assign_room_to_student_qweb',
-                                    values={'extra_data': 'test'})
+        self.message_post_with_view('my_hostel.assign_room_to_student_qweb')
 
     @api.model
     def message_new(self, msg_dict, custom_values=None):
