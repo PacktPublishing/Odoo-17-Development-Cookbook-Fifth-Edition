@@ -26,9 +26,11 @@
                                 <field name="name"/>
                                 <field name="gender"/>
                                 <field name="active"/>
-                                 <field name="ip" invisible="1"/>
+                                <field name="test_type_id" invisible="1"/>
+                                <field name="test_type"/>
+                                <field name="ip" invisible="1"/>
                                 <field name="identifier" invisible="1"/>
-                                <field name="device_id" required="1"/>
+                                <field name="device_id" required="0"/>
                                 <field name="picture" widget="iot_picture"
                                        options="{'ip_field': 'ip', 'identifier': 'identifier'}"/>
                             </group>

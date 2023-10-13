@@ -20,6 +20,9 @@ class HostelStudent(models.Model):
                 if duration != stu.duration:
                     stu.discharge_date = (stu.admission_date + timedelta(days=stu.duration)).strftime('%Y-%m-%d')
 
+    def _get_default_test_type_id(self):
+        return self.env['quality.point.test_type'].search([('technical_name', '=','picture')], limit=1).id
+
     name = fields.Char("Student Name")
     gender = fields.Selection([("male", "Male"),
         ("female", "Female"), ("other", "Other")],
@@ -41,6 +44,10 @@ class HostelStudent(models.Model):
     duration = fields.Integer("Duration", compute="_compute_check_duration", inverse="_inverse_duration",
                                help="Enter duration of living")
     device_id = fields.Many2one('iot.device', string='IoT Device', domain="[('type', '=', 'camera')]")
+    test_type_id = fields.Many2one('quality.point.test_type', 'Test Type',
+                                   help="Defines the type of the quality control point.",
+                                   required=True, default=_get_default_test_type_id)
+    test_type = fields.Char(related='test_type_id.technical_name', readonly=True)
     ip = fields.Char(related="device_id.iot_id.ip")
     identifier = fields.Char(related='device_id.identifier')
     picture = fields.Binary()
