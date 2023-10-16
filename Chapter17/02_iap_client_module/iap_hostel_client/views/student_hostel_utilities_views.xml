@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hostel_student_utilities_view_form" model="ir.ui.view">
+        <field name="name">Hostel Student Utilities Form</field>
+        <field name="model">hostel.student</field>
+        <field name="inherit_id" ref="my_hostel.view_hostel_student_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='student_form']" position="before">
+                <div name="button_box" position="inside">
+                    <button class="oe_stat_button" type="object"
+                        name="call_laundry_facilities"
+                        string="Call Laundry Facilities"
+                        icon="fa-pagelines">
+                    </button>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
