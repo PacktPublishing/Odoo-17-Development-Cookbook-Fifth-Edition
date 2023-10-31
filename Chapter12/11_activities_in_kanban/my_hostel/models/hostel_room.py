@@ -60,6 +60,7 @@ class HostelRoom(models.Model):
 
 class HostelRoomState(models.Model):
     _name = 'hostel.room.stage'
+    _description = 'Room Stages'
     _order = 'sequence,name'
 
     name = fields.Char("Name")
