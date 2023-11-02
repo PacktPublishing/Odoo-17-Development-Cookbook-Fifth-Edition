@@ -77,48 +77,31 @@
         <field name="model">hostel.room</field>
         <field name="arch" type="xml">
             <kanban default_group_by="stage_id" on_create="quick_create" quick_create_view="my_hostel.hostel_room_view_form_minimal">
-                <field name="stage_id" />
-                <field name="color" />
-                <field name="activity_state"/>
-                <progressbar field="activity_state" colors='{"planned": "success", "today": "warning", "overdue": "danger"}'/>
+                <field name="stage_id"/>
+                <field name="color"/>
+                <progressbar field="popularity" colors='{"low": "success", "medium": "warning", "high": "danger"}'/>
                 <templates>
+                    <t t-name="kanban-menu" groups="base.group_user">
+                        <a t-if="widget.editable" role="menuitem" type="edit" class="dropdown-item">Edit</a>
+                        <a t-if="widget.deletable" role="menuitem" type="delete" class="dropdown-item">Delete</a>
+                        <ul class="oe_kanban_colorpicker" data-field="color"/>
+                        <div role="separator" class="dropdown-divider"></div>
+                    </t>
                     <t t-name="kanban-box">
-                        <div t-attf-class="#{kanban_color(record.color)} oe_kanban_global_click">
-                            <div class="o_dropdown_kanban dropdown">
-                                <a class="dropdown-toggle o-no-caret btn" role="button" data-toggle="dropdown">
-                                    <span class="fa fa-ellipsis-v"> </span>
-                                </a>
-                                <div class="dropdown-menu" role="menu">
-                                    <t t-if="widget.editable">
-                                        <a role="menuitem" type="edit" class="dropdown-item">Edit</a>
-                                    </t>
-                                    <t t-if="widget.deletable">
-                                        <a role="menuitem" type="delete" class="dropdown-item">Delete</a>
-                                    </t>
-                                    <ul class="oe_kanban_colorpicker" data-field="color"/>
+                        <div t-attf-class="{{'oe_kanban_color_' + kanban_getcolor(record.color.raw_value) }} oe_kanban_card oe_kanban_global_click oe_semantic_html_override">
+                            <div class="oe_kanban_card oe_kanban_global_click">
+                                <strong class="o_kanban_record_title">
+                                    <field name="name"/>
+                                </strong>
+                                <div class="text-muted">
+                                    <i class="fa fa-building">    </i>
+                                    <field name="hostel_id" />
                                 </div>
-                            </div>
-                            <div class="oe_kanban_content">
-                                <div class="oe_kanban_card oe_kanban_global_click">
-                                    <div>
-                                        <i class="fa fa-bed">  </i>
-                                        <b>
-                                            <field name="name" />
-                                        </b>
-                                    </div>
-                                    <div class="text-muted">
-                                        <i class="fa fa-building">    </i>
-                                        <field name="hostel_id" />
-                                    </div>
-                                    <span class="oe_kanban_list_many2many">
-                                        <field name="hostel_amenities_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
-                                    </span>
-                                    <div>
-                                        <field name="popularity" widget="priority"/>
-                                    </div>
-                                    <div>
-                                        <field name="activity_ids" widget="kanban_activity"/>
-                                    </div>
+                                <span class="oe_kanban_list_many2many">
+                                    <field name="hostel_amenities_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                                </span>
+                                <div>
+                                    <field name="popularity" widget="priority"/>
                                 </div>
                             </div>
                         </div>
