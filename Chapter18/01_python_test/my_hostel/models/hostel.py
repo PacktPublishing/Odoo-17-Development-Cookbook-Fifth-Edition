@@ -43,6 +43,7 @@ class HostelRoom(models.Model):
 
     def make_available(self):
         self.change_state('available')
+        return True
 
     def make_closed(self):
         self.change_state('closed')
