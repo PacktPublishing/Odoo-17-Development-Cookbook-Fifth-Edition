@@ -65,7 +65,7 @@ class HostelRoom(models.Model):
                 (0, 0, categ2),
             ]
         }
-        # Total 3 records (1 parent and 2 child) will be craeted in library.book.category model
+        # Total 3 records (1 parent and 2 child) will be created in hostel.room.category model
         record = self.env['hostel.room.category'].create(parent_category_val)
         return True
 

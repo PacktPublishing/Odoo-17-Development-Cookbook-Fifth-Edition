@@ -14,7 +14,7 @@ class HostelRoom(models.Model):
     _description = "Information about hostel Room"
 
     name = fields.Char(string="Hostel Name", required=True)
-    room_no = fields.Char(string="Room Number", required=True)
+    room_no = fields.Char(string="Room Number", required=False)
     other_info = fields.Text("Other Information",
                              help="Enter more information")
     description = fields.Html('Description')
