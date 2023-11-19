@@ -6,7 +6,7 @@ Manage Hostel
 ==============
 Efficiently manage the entire residential facility in the school
     """,  # Supports reStructuredText(RST) format (description is Deprecated)
-    "version": "16.0.1.0.0",
+    "version": "1.0",
     "author": "Serpent Consulting Services Pvt. Ltd.",
     "category": "Hostel",
     "website": "http://www.serpentcs.com",
@@ -16,7 +16,7 @@ Efficiently manage the entire residential facility in the school
         'security/groups.xml',
         'security/ir.model.access.csv',
         'security/security_rules.xml',
-        # 'views/res_config_settings.xml',
+        'views/res_config_settings.xml',
         'views/hostel_hostel.xml'
     ],
     # This demo data files will be loaded if db initialize with demo data (commented because file is not added in this example)
