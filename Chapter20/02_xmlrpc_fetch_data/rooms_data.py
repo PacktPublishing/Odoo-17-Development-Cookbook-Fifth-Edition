@@ -1,8 +1,8 @@
 from xmlrpc import client
 
 # room data with search method
-server_url = 'http://localhost:8016'
-db_name = 'cookbook_16e'
+server_url = 'http://localhost:8017'
+db_name = 'cookbook_17e'
 username = 'admin'
 password = 'admin'
 
