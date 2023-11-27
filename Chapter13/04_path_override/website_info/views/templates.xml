@@ -5,12 +5,12 @@
             <table class="table">
                 <tr t-foreach="apps" t-as="app">
                     <th>
-                        <a t-att-href="app.website">
-                            <t t-esc="app.name" />
+                        <a t-att-href="app.website" groups='base.group_no_one'>
+                            <t t-out="app.name" />
                         </a>
                     </th>
                     <td>
-                        <t t-esc="app.summary" />
+                        <span t-out="app.summary" />
                     </td>
                 </tr>
             </table>

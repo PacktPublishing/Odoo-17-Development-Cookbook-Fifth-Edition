@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Website info",  # Module title
-    'summary': "Override Website info",  # Module subtitle phrase
-    'author': "Parth Gajjar",
-    'category': 'Uncategorized',
-    'version': '14.0.1',
-    'depends': ['website'],
-    'data': [
-        'views/templates.xml'
-    ],
+    "name": "Website info",  # Module title
+    "summary": "Override Website info",  # Module subtitle phrase
+    "description": """Override Website info
+    """,
+    "version": "17.0.1.0.0",
+    "author": "Serpent Consulting Services Pvt. Ltd.",
+    "category": "Tools",
+    "website": "http://www.serpentcs.com",
+    "license": "AGPL-3",
+    "depends": ["website"],
+    "data": ['views/templates.xml'],
+    "installable": True,
 }
+

@@ -6,6 +6,7 @@
 # /!\/!\/!\/!\/!\/!\/!\/!\
 
 
+from odoo import http
 from odoo import exceptions, models
 from odoo.http import request
 
