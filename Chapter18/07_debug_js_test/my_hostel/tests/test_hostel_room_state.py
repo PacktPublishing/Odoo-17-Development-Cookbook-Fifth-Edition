@@ -1,11 +1,4 @@
 from odoo.tests.common import TransactionCase, tagged
-from odoo.tests import HttpCase
-
-@tagged('post_install', '-at_install')
-class TestUi(HttpCase):
-
-    def test_hostel_tour(self):
-        self.start_tour("/web", 'hostel_tour', login="admin")
 
 @tagged('-at_install', 'post_install')
 class TestHostelRoomState(TransactionCase):

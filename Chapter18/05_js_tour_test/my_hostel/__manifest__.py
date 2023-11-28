@@ -7,11 +7,11 @@ Manage Library
 ==============
 Description related to Hostel.
     """,  # Supports reStructuredText(RST) format
-    "version": "16.0.1.0.0",
+    "version": "17.0.1.0.0",
     "author": "Serpent Consulting Services Pvt. Ltd.",
     "category": "Tools",
     "website": "http://www.serpentcs.com",
-    "depends": ['web', 'base', 'web_tour',],
+    "depends": ['base'],
     "license": "AGPL-3",
     'data': [
         'data/data.xml',
@@ -31,6 +31,4 @@ Description related to Hostel.
             'my_hostel/static/tests/**/*',
         ],
      },
-    'installable': True,
-    'application': True,
 }

@@ -1,31 +1,32 @@
 /** @odoo-module **/
 
-import { _t } from 'web.core';
-import { Markup } from 'web.utils';
-import tour from 'web_tour.tour';
+import { _t } from "@web/core/l10n/translation";
+import { registry } from "@web/core/registry";
+import { stepUtils } from "@web_tour/tour_service/tour_utils";
+import { markup } from "@odoo/owl";
 
 
-tour.register('hostel_tour', {
+registry.category("web_tour.tours").add("hostel_tour", {
     url: "/web",
-    rainbowManMessage: false,
-    sequence: 5,
-}, [tour.stepUtils.showAppsMenuItem(), {
+    rainbowMan: false,
+    sequence: 20,
+    steps: () => [stepUtils.showAppsMenuItem(), {
     trigger: '.o_app[data-menu-xmlid="my_hostel.hostel_base_menu"]',
-    content: Markup(_t("Ready to launch your <b>Hostel</b>?")),
+    content: markup(_t("Ready to launch your <b>Hostel</b>?")),
     position: 'bottom',
     edition: 'community',
 }, {
     trigger: '.o_app[data-menu-xmlid="my_hostel.hostel_base_menu"]',
-    content: Markup(_t("Ready to launch your <b>Hostel</b>?")),
+    content: markup(_t("Ready to launch your <b>Hostel</b>?")),
     position: 'bottom',
     edition: 'enterprise',
 }, {
     trigger: '.o_list_button_add',
-    content: Markup(_t("Let's create new room.")),
+    content: markup(_t("Let's create new room.")),
     position: 'bottom',
 }, {
     trigger: ".o_form_view .o_field_char[name='name']",
-    content: Markup(_t('Add a new <b> Hostel Room </b>.')),
+    content: markup(_t('Add a new <b> Hostel Room </b>.')),
     position: "top",
     run: function (actions) {
         actions.text("Hostel Room 01", this.$anchor.find("input"));
@@ -40,5 +41,5 @@ tour.register('hostel_tour', {
     position: "bottom",
     run: function (actions) {
         actions.auto(".breadcrumb-item:not(.active):last");
-    }
-}]);
+    },
+},]});
