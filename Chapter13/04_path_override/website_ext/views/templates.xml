@@ -5,7 +5,7 @@
             <table class="table">
                 <tr t-foreach="apps" t-as="app">
                     <th>
-                        <a t-att-href="app.website" groups='base.group_no_one'>
+                        <a t-att-href="app.website">
                             <t t-out="app.name" />
                         </a>
                     </th>
