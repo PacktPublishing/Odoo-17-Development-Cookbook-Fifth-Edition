@@ -6,7 +6,7 @@ class HostelStudent(models.Model):
     _name = "hostel.student"
     _description = "Hostel Student Information"
 
-    # @api.depends("admission_date", "discharge_date")
+    @api.depends("admission_date", "discharge_date")
     def _compute_check_duration(self):
         """Method to check duration"""
         for rec in self:
@@ -38,5 +38,5 @@ class HostelStudent(models.Model):
         default=fields.Datetime.today)
     discharge_date = fields.Date("Discharge Date",
         help="Date on which student discharge")
-    duration = fields.Integer("Duration", compute="_compute_check_duration", store=True, inverse="_inverse_duration",
+    duration = fields.Integer("Duration", compute="_compute_check_duration", inverse="_inverse_duration",
                                help="Enter duration of living")
