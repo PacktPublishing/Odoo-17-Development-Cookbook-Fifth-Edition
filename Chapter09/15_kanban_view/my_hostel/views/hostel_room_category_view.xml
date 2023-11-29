@@ -77,10 +77,9 @@
                         </group>
                     </group>
                     <group>
-                        <field name="child_ids" attrs="{
-                            'invisible': [('parent_id', '=', False)],
-                            'required': [('parent_id', '=', True)]
-                        }"/>
+                        <field name="child_ids"
+                               invisible="not parent_id"
+                               required="parent_id"/>
                         <field name="hoste_room_ids">
                             <tree>
                                 <field name="name"/>
@@ -97,7 +96,7 @@
                         </field>
                     </group>
                 </sheet>
-                <div class="o_attachment_preview" attrs="{'invisible': [('hoste_room_ids', '=', False)]}" options="{'types': ['image', 'pdf'], 'order': 'desc'}"/>
+                <div class="o_attachment_preview" invisible="not hoste_room_ids" options="{'types': ['image', 'pdf'], 'order': 'desc'}"/>
                 <div class="oe_chatter">
                     <field name="message_follower_ids" widget="mail_followers"/>
                     <field name="message_ids" widget="mail_thread"/>

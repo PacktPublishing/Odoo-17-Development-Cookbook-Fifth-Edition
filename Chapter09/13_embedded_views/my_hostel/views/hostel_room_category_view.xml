@@ -41,10 +41,9 @@
                         </group>
                     </group>
                     <group>
-                        <field name="child_ids" attrs="{
-                            'invisible': [('parent_id', '=', False)],
-                            'required': [('parent_id', '=', True)]
-                        }"/>
+                        <field name="child_ids"
+                               invisible="not parent_id"
+                               required="parent_id"/>
                         <field name="hoste_room_ids">
                             <tree>
                                 <field name="name"/>
