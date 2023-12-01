@@ -71,5 +71,4 @@ class HostelStudent(models.Model):
         return result
 
     def send_mail_assign_room(self):
-        template_id = self.env.ref('my_hostel.assign_room_to_student')
-        self.message_post_with_template(template_id.id)
+        self.message_post_with_source('my_hostel.assign_room_to_student')

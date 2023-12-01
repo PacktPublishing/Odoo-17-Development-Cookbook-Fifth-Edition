@@ -75,11 +75,10 @@ class HostelStudent(models.Model):
         return result
 
     def send_mail_assign_room(self):
-        template_id = self.env.ref('my_hostel.assign_room_to_student')
-        self.message_post_with_template(template_id.id)
+        self.message_post_with_source('my_hostel.assign_room_to_student')
 
     def send_mail_assign_room_qweb(self):
-        self.message_post_with_view('my_hostel.assign_room_to_student_qweb')
+        self.message_post_with_source('my_hostel.assign_room_to_student_qweb')
 
     @api.model
     def message_new(self, msg_dict, custom_values=None):

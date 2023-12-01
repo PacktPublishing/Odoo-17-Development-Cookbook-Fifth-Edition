@@ -50,7 +50,6 @@
     <record id="mail_alias_room_assign" model="mail.alias">
         <field name="alias_name">room</field>
         <field name="alias_model_id" ref="model_hostel_student"/>
-        <field name="alias_user_id" ref="base.user_admin"/>
         <field name="alias_contact">partners</field>
     </record>
 </odoo>
