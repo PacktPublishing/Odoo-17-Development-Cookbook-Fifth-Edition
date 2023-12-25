@@ -1,64 +1,78 @@
-odoo.define('point_of_sale_customization.point_of_sale_customization', function (require) {
-    "use strict";
+/** @odoo-module */
 
-    const PosComponent = require('point_of_sale.PosComponent');
-    const ProductScreen = require('point_of_sale.ProductScreen');
-    const Registries = require('point_of_sale.Registries');
-    const { sprintf } = require("web.utils");
+import { Component } from "@odoo/owl";
+import { ErrorPopup } from "@point_of_sale/app/errors/popups/error_popup";
+import { ProductScreen } from "@point_of_sale/app/screens/product_screen/product_screen";
+import { SelectionPopup } from "@point_of_sale/app/utils/input_popups/selection_popup";
+import { usePos } from "@point_of_sale/app/store/pos_hook";
+import { useService } from "@web/core/utils/hooks";
+import { sprintf } from "@web/core/utils/strings";
 
-    class PosDiscountButton extends PosComponent {
-        async onClick() {
-            const order = this.env.pos.get_order();
-            if (order.selected_orderline) {
-                order.selected_orderline.set_discount(5);
-            }
+export class PosDiscountButton extends Component {
+    static template = "PosDiscountButton";
+    setup() {
+        this.pos = usePos();
+    }
+    async onClick() {
+        const order = this.pos.get_order();
+        if (order.selected_orderline) {
+            order.selected_orderline.set_discount(5);
         }
     }
-    PosDiscountButton.template = 'PosDiscountButton';
-    ProductScreen.addControlButton({
-        component: PosDiscountButton,
-        condition: function () {
-            return true;
-        },
-    });
-    Registries.Component.add(PosDiscountButton);
+}
+ProductScreen.addControlButton({
+    component: PosDiscountButton,
+    condition: function () {
+        return true;
+    },
+});
 
-    class PosLastOrderButton extends PosComponent {
-        async onClick() {
-            var self = this;
-            const order = this.env.pos.get_order();
-            const client = order.get_partner();
-            if (client) {
-                var domain = [['partner_id', '=', client.id]];
-                this.rpc({
-                    model: 'pos.order',
-                    method: 'search_read',
-                    args: [domain, ['name', 'amount_total']],
-                    kwargs: { limit: 5 },
-                }).then(function (orders) {
-                    if (orders.length > 0) {
-                        var order_list = orders.map((o) => {
-                            return { 'label': sprintf("%s -TOTAL: %s", o.name, o.amount_total) };
-                        });
-                        self.showPopup('SelectionPopup', { title:'Last 5 orders', list:order_list });
-                    } else {
-                        self.showPopup('ErrorPopup', { body: 'No previous orders found' });
-                    }
+export class PosLastOrderButton extends Component {
+    static template = "PosLastOrderButton";
+    setup() {
+        this.pos = usePos();
+        this.popup = useService("popup");
+    }
+    async onClick() {
+        var self = this;
+        const order = this.pos.get_order();
+        const client = order.get_partner();
+        if (client) {
+            var domain = [['partner_id', '=', client.id]];
+            const orders = await this.pos.orm.call(
+                "pos.order",
+                "search_read",
+                [],
+                {
+                    domain: domain,
+                    fields: ['name', 'amount_total'],
+                    limit:5
+                }
+            );
+            if (orders.length > 0) {
+                var order_list = orders.map((o) => {
+                    return { 'label': sprintf("%s -TOTAL: %s", o.name, o.amount_total) };
+                });
+                await this.popup.add(SelectionPopup, {
+                    title: 'Last 5 orders',
+                    list: order_list
                 });
             } else {
-                self.showPopup('ErrorPopup', { body: 'Please select the customer' });
+                await this.popup.add(ErrorPopup, {
+                    body: "No previous orders found"
+                });
             }
+        } else {
+            await this.popup.add(ErrorPopup, {
+                body: "No previous orders found"
+            });
         }
-     }
-     PosLastOrderButton.template = 'PosLastOrderButton';
-     ProductScreen.addControlButton({
-         component: PosLastOrderButton,
-         condition: function () {
-             return true;
-         },
-     });
-     Registries.Component.add(PosLastOrderButton);
-
-    return PosDiscountButton;
-
+    }
+}
+ProductScreen.addControlButton({
+    component: PosLastOrderButton,
+    condition: function () {
+        return true;
+    },
 });
+

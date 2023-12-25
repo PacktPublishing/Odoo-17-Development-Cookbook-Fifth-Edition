@@ -1,27 +1,25 @@
-odoo.define('point_of_sale_customization.point_of_sale_customization', function (require) {
-    "use strict";
+/** @odoo-module */
 
-    const PosComponent = require('point_of_sale.PosComponent');
-    const ProductScreen = require('point_of_sale.ProductScreen');
-    const Registries = require('point_of_sale.Registries');
+import { Component } from "@odoo/owl";
+import { ProductScreen } from "@point_of_sale/app/screens/product_screen/product_screen";
+import { usePos } from "@point_of_sale/app/store/pos_hook";
 
-    class PosDiscountButton extends PosComponent {
-        async onClick() {
-            const order = this.env.pos.get_order();
-            if (order.selected_orderline) {
-                order.selected_orderline.set_discount(5);
-            }
+export class PosDiscountButton extends Component {
+    static template = "PosDiscountButton";
+    setup() {
+        this.pos = usePos();
+    }
+    async onClick() {
+        const order = this.pos.get_order();
+        if (order.selected_orderline) {
+            order.selected_orderline.set_discount(5);
         }
     }
-    PosDiscountButton.template = 'PosDiscountButton';
-    ProductScreen.addControlButton({
-        component: PosDiscountButton,
-        condition: function () {
-            return true;
-        },
-    });
-    Registries.Component.add(PosDiscountButton);
-
-    return PosDiscountButton;
-
+}
+ProductScreen.addControlButton({
+    component: PosDiscountButton,
+    condition: function () {
+        return true;
+    },
 });
+
