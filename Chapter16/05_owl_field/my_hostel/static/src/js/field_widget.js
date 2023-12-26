@@ -25,7 +25,7 @@ export class OWLCategColorField extends Component {
         super.setup();
     }
     colorUpdated(value) {
-        this.props.update(value);
+        this.props.record.update({ [this.props.name]: value });
     }
     async loadCategInformation() {
         var self = this;
@@ -45,5 +45,7 @@ export class OWLCategColorField extends Component {
         });
     }
 }
-registry.category("fields").add("category_color", OWLCategColorField);
 
+registry.category("fields").add("category_color", {
+    component: OWLCategColorField,
+});

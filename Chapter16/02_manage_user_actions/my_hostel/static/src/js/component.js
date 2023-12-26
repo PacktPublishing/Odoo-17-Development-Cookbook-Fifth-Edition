@@ -1,4 +1,4 @@
-odoo.define('my_hostel.component', function (require) {
+odoo.define('my_hostel.component', [], function (require) {
     "use strict";
 
     console.log("Load component......");

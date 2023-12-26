@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates xml:space="preserve">
 
-    <t t-name="OWLColorPill" owl="1">
+    <t t-name="OWLColorPill">
         <span t-attf-class="o_color_pill o_color_#{props.color} #{props.value == props.color ? 'active': ''}"
               t-att-data-val="props.color"
-              t-on-click="pillClicked"
+              t-on-click="() => this.pillClicked()"
               t-attf-title="#{props.category_count or 0 } Room booked in this category" />
     </t>
 
-    <span t-name="OWLFieldColorPills" owl="1">
+    <span t-name="OWLFieldColorPills" >
         <t t-foreach="totalColors" t-as='color' t-key="color">
             <ColorPill onClickColorUpdated="data => this.colorUpdated(data)"
                        color='color'
