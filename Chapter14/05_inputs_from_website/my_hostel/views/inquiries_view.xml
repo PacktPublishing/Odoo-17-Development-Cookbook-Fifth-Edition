@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_hostel_inquiry_tree" model="ir.ui.view">
+            <field name="name">hostel.inquiry.tree</field>
+            <field name="model">hostel.inquiries</field>
+            <field name="arch" type="xml">
+                <tree string="Inquiries">
+                    <field name="name"/>
+                    <field name="phone"/>
+                    <field name="email"/>
+                    <field name="book_fy"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_hostel_inquiry_form" model="ir.ui.view">
+            <field name="name">hostel.inquiry.form</field>
+            <field name="model">hostel.inquiries</field>
+            <field name="arch" type="xml">
+                <form string="Inquiries">
+                    <sheet>
+                        <div class="oe_title">
+                            <h3>
+                                <table>
+                                    <tr>
+                                        <td style="padding-right:10px;"><field name="name" required="1" 
+                                        placeholder="Name" /></td>
+                                    </tr>
+                                </table>
+                            </h3>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="phone"/>
+                                <field name="email"/>
+                                <field name="book_fy"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="queries"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_inquiry">
+            <field name="name">Inquiries</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hostel.inquiries</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Create Inquiries.
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="hostel_inquiry_main_menu" name="Inquiries" parent="hostel_main_menu" sequence="2" />
+
+        <menuitem id="hostel_inquiry_menu" name="Inquiries" parent="hostel_inquiry_main_menu" 
+            action="my_hostel.action_inquiry" groups="my_hostel.group_hostel_manager" 
+            sequence="1"/>
+
+    </data>
+</odoo>
