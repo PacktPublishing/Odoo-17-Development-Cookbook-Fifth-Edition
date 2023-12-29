@@ -1,11 +1,13 @@
 /** @odoo-module **/
+
 import { Component } from "@odoo/owl";
 
 export class M2mGroupRenderer extends Component {
     onClickViewButton(group) {
-        var children_ids = _.map(group.children, function (group_id) {
+        var children_ids = group.children.map((group_id) => {
             return group_id.id;
         });
+        
         const domain =  [['id', 'in', children_ids]]
         this.props.onClickViewButton(domain);
     }

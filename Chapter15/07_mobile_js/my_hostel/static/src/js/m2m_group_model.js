@@ -1,6 +1,6 @@
 /** @odoo-module **/
 
-import { Model } from "@web/views/model";
+import { Model } from "@web/model/model";
 
 export class M2mGroupModel extends Model {
     setup(params) {

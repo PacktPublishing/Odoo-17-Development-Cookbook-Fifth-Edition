@@ -1,11 +1,11 @@
 /** @odoo-module **/
 
-import { XMLParser } from "@web/core/utils/xml";
+import { visitXML } from "@web/core/utils/xml";
 
-export class M2mGroupArchParser extends XMLParser {
+export class M2mGroupArchParser {
     parse(arch, fields = {}) {
         const archInfo = { fields, fieldAttrs: {} };
-        this.visitXML(arch, (node) => {
+        visitXML(arch, (node) => {
             switch (node.tagName) {
                 case "m2m_group": {
                     const m2m_field = node.getAttribute("m2m_field");

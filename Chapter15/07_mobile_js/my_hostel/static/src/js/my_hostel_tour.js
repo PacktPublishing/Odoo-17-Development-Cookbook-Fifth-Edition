@@ -1,26 +1,26 @@
-odoo.define('my_hostel.tour', function(require) {
-    "use strict";
+/** @odoo-module **/
 
-    const {_t} = require('web.core');
-    const {Markup} = require('web.utils');
-    var tour = require('web_tour.tour');
+import { _t } from "@web/core/l10n/translation";
+import { registry } from "@web/core/registry";
+import { markup } from "@odoo/owl"
+import { stepUtils } from "@web_tour/tour_service/tour_utils";
 
-    tour.register('hostel_tour', {
-        url: "/web",
-        rainbowMan: false,
-        sequence: 5,
-    }, [tour.stepUtils.showAppsMenuItem(), {
-        trigger: '.o_app[data-menu-xmlid="sale.sale_menu_root"]',
-        content: Markup(_t("Ready to launch your <b>hostel</b>?")),
+registry.category("web_tour.tours").add('hostel_tour',  {
+    url: "/web",
+    rainbowManMessage: _t("Congrats, best of luck catching such big fish! :)"),
+    sequence: 5,
+    steps: () => [stepUtils.showAppsMenuItem(), {
+        trigger: '.o_app[data-menu-xmlid="my_hostel.hostel_main_menu"]',
+        content: markup(_t("Ready to launch your <b>hostel</b>?")),
         position: 'bottom',
-    },{
+    }, {
         trigger: '.o_list_button_add',
-        content: Markup(_t("Let's create new room.")),
-        position: "bottom"
+        content: markup(_t("Let's create new room.")),
+        position: "bottom",
     },{
         trigger: '.o_form_button_save',
-        content: Markup(_t('Save this room record')),
-        position: 'bottom',
-    }]);
-
+        content: markup(_t('Save this room record')),
+        position: "bottom",
+    }]
 });
+

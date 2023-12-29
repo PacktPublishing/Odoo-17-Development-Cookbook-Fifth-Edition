@@ -2,15 +2,14 @@
 
 import { useService } from "@web/core/utils/hooks";
 import { Layout } from "@web/search/layout";
-import { useModel } from "@web/views/model";
+import { useModelWithSampleData } from "@web/model/model";
 import { standardViewProps } from "@web/views/standard_view_props";
-
 import { Component } from "@odoo/owl";
 
 export class M2mGroupController extends Component {
     setup() {
         this.actionService = useService("action");
-        this.model = useModel(this.props.Model, this.props.modelParams);
+        this.model = useModelWithSampleData(this.props.Model, this.props.modelParams);
     }
     _onBtnClicked(domain) {
         this.actionService.doAction({

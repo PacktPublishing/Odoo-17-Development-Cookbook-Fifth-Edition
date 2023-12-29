@@ -8,13 +8,13 @@ export class CategColorField extends Component {
         this.totalColors = [1,2,3,4,5,6];
         super.setup();
     }
-    clickPill(ev) {
-        var $target = $(ev.currentTarget);
-        var data = $target.data();
-        this.props.update(data.value);
+    clickPill(value) {
+        this.props.record.update({ [this.props.name]: value });
     }
 }
 CategColorField.template = "CategColorField";
 CategColorField.supportedTypes = ["integer"];
-registry.category("fields").add("category_color", CategColorField);
+registry.category("fields").add("category_color", {
+    component: CategColorField,
+});
 

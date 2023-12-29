@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates xml:space="preserve">
-    <t t-name="CategColorField" owl="1">
+    <t t-name="CategColorField">
         <div>
             <t t-foreach="totalColors" t-as="color" t-key="color">
                 <span t-attf-class="o_color_pill o_color_#{color} 
-                      {{props.value == color ? 'active': ''}}" 
+                      {{props.record.data[props.name] == color ? 'active': ''}}" 
                       t-att-data-value="color"
-                      t-on-click="clickPill"
-                      t-on-mouseover="categInfo"/>
+                      t-on-click="() => this.clickPill(color)"
+                      t-on-mouseover.prevent="categInfo"/>
             </t>
             <div class="categInformationPanel"/>
         </div>
@@ -154,17 +154,16 @@
             </t>
         </div>
     </t>
-    <t t-extend="CategInformation">
-        <t t-jquery="div" t-operation="prepend">
+    <t t-name="CategInformationCustom" t-inherit="my_hostel.CategInformation"
+        t-inherit-mode="extension">
+        <xpath expr='//t[@t-if="value == 1"]' position="before">
             <i class="fa fa-info-circle" aria-hidden="true"></i>
-        </t>
-    </t>
-     <t t-extend="CategInformation">
-        <t t-jquery="div" t-operation="append">
+        </xpath>
+        <xpath expr="//div" position="inside">
             <div class="text-center" 
                  style="color:gray;background: white;padding:3px;padding: 5px;border-radius: 5px;">
-                Total Booked Room: <t t-esc="widget.categoryInfo[value] or 0"/>
+                Total Booked Rooms: <t t-esc="widget.categoryInfo[value] or 0"/>
             </div>
-        </t>
+        </xpath>
     </t>
 </templates>
