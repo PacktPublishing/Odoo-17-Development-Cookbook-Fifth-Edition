@@ -133,6 +133,8 @@
         <field name="act_window_id" ref="action_hostel_room"/>
     </record>
 
+    <menuitem id="hostel_main_menu" name="Hostel" sequence="1"/>
+
     <menuitem id="hostel_room_menu" name="Hostel Room" parent="my_hostel.hostel_main_menu"
         action="my_hostel.action_hostel_room" groups="my_hostel.group_hostel_manager"
         sequence="2"/>

@@ -1,11 +1,10 @@
-from odoo import fields, models
+from odoo import fields, models, api
 
 
 class Hostel(models.Model):
     _name = 'hostel.hostel'
     _description = "Information about hostel"
     _order = "id desc, name"
-    _rec_name = 'hostel_code'
 
     name = fields.Char(string="hostel Name", required=True)
     hostel_code = fields.Char(string="Code", required=True)
@@ -34,9 +33,7 @@ class Hostel(models.Model):
                                  )
     category_id = fields.Many2one('hostel.category')
 
-    def name_get(self):
-        result = []
-        for record in self:
-            rec_name = "%s (%s)" % (record.name, record.hostel_code)
-            result.append((record.id, rec_name))
-        return result
+    @api.depends('hostel_code')
+    def _compute_display_name(self):
+        for hostel in self:
+            hostel.display_name = f"{hostel.name} {hostel.hostel_code}"
