@@ -52,6 +52,7 @@
                             <group>
                                 <field name="category_id"/>
                                 <field name="hostel_floors"/>
+                                <field name="rector"/>
                                 <field name="active"/>
                                 <field name="type"/>
                                 <field name="hostel_rating"/>

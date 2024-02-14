@@ -9,7 +9,7 @@ class Main(http.Controller):
         record = request.env['hostel.student'].sudo().browse(int(student_id))
         return u'<html><body><h1>%s</h1>Room No: %s' % (
             record.name,
-            u', '.join(record.room_id.room_no) or 'none',
+            str(record.room_id.room_no) or 'none',
         )
 
     @http.route("/my_hostel/student_details/<model('hostel.student'):student>",  
