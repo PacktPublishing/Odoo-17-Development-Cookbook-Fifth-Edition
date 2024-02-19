@@ -1,4 +1,4 @@
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class Hostel(models.Model):
@@ -19,9 +19,10 @@ class Hostel(models.Model):
     mobile = fields.Char('Mobile',required=True)
     email = fields.Char('Email')
 
-    def name_get(self):
-        result = []
+    @api.depends('hostel_code')
+    def _compute_display_name(self):
         for record in self:
-            rec_name = "%s (%s)" % (record.name, record.hostel_code)
-            result.append((record.id, rec_name))
-        return result
+            name = record.name
+            if record.hostel_code:
+                name = f'{name} ({record.hostel_code})'
+            record.display_name = name
