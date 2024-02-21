@@ -4,6 +4,7 @@ from odoo import api, fields, models
 
 class RoomCategory(models.Model):
     _name = 'hostel.room.category'
+    _description = "Hostel Room Category"
 
     name = fields.Char('Category')
     description = fields.Text('Description')

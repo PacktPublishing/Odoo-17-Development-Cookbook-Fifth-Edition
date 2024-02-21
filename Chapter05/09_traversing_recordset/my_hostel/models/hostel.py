@@ -124,4 +124,5 @@ class HostelRoomMember(models.Model):
     date_end = fields.Date('Termination Date')
     member_number = fields.Char()
     date_of_birth = fields.Date('Date of birth')
+    name = fields.Char('Name')
 
