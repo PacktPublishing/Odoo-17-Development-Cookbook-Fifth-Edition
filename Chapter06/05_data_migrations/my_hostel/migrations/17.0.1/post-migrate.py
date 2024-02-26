@@ -23,5 +23,5 @@ def migrate(cr, version):
                 # order ...
                 pass
         if new_date:
-            cr.execute('UPDATE hostel_room SET allocation_date=%s',
+            cr.execute("UPDATE hostel_room SET allocation_date=%s where id=1",
                        (new_date,))
