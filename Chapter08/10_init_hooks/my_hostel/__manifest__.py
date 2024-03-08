@@ -26,7 +26,9 @@ Efficiently manage the entire residential facility in the school
         "views/hostel_room_availability_view.xml",
         "views/res_config_settings_views.xml",
     ],
+    'pre_init_hook':'pre_init_hook_hostel',
     'post_init_hook': 'add_room_hook',
+    'uninstall_hook': 'uninstall_hook_user',
     # This demo data files will be loaded if db initialize with demo data (commented because file is not added in this example)
     "demo": [
         'data/room_demo.xml'

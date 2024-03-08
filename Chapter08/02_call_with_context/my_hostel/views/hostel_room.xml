@@ -71,7 +71,7 @@
         </record>
 
         <menuitem id="hostel_room_menu" name="Hostel Room" parent="my_hostel.hostel_main_menu" 
-            action="my_hostel.action_hostel_room" groups="my_hostel.group_hostel_manager" 
+            action="my_hostel.action_hostel_room" groups="my_hostel.group_hostel_manager,my_hostel.group_hostel_user" 
             sequence="2"/>
 
     </data>
