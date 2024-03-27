@@ -101,6 +101,9 @@
                                 <div>
                                     <field name="popularity" widget="priority"/>
                                 </div>
+                                <div>
+                                    <field name="activity_ids" widget="kanban_activity"/>
+                                </div>
                             </div>
                         </div>
                     </t>
