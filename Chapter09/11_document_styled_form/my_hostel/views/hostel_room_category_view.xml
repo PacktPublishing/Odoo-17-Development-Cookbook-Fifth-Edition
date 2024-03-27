@@ -42,7 +42,7 @@
                     </group>
                     <group>
                         <field name="child_ids"/>
-                        <field name="hoste_room_ids" widget="many2many_tags"/>
+                        <field name="hostel_room_ids" widget="many2many_tags"/>
                     </group>
                 </sheet>
                 <div class="oe_chatter">

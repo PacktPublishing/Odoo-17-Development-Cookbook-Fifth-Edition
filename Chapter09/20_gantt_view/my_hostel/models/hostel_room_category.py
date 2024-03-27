@@ -18,7 +18,7 @@ class RoomCategory(models.Model):
     child_ids = fields.One2many(
         'hostel.room.category', 'parent_id',
         string='Child Categories')
-    hoste_room_ids = fields.One2many(
+    hostel_room_ids = fields.One2many(
         'hostel.room', 'hostel_room_category_id',
         string='Hostel Room')
     related_hostel_room = fields.Integer(compute='_compute_related_hostel_room')

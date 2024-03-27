@@ -44,7 +44,7 @@
                         <field name="child_ids"
                                invisible="not parent_id"
                                required="parent_id"/>
-                        <field name="hoste_room_ids">
+                        <field name="hostel_room_ids">
                             <tree>
                                 <field name="name"/>
                                 <field name="room_no"/>
