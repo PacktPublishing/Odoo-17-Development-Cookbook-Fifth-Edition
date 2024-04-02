@@ -59,3 +59,11 @@ class HostelStudent(models.Model):
         })
         if room_rec:
             self.room_id = room_rec.id
+
+    @api.model
+    def create(self, values):
+        result = super(HostelStudent, self).create(values)
+        if result.discharge_date:
+            result.activity_schedule('mail.mail_activity_data_call',
+                                date_deadline=result.discharge_date)
+        return result

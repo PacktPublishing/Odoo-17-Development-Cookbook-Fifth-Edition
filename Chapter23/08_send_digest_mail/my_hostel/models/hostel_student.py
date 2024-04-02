@@ -67,11 +67,12 @@ class HostelStudent(models.Model):
 
     @api.model
     def create(self, values):
-        result = super(HostelStudent, self).create(values)
-        self.env['res.partner'].create({
+        result = super().create(values)
+        partner_id = self.env['res.partner'].create({
             'name': result.name,
             'email': result.email
         })
+        result.message_subscribe(partner_ids=[partner_id.id])
         return result
 
     def send_mail_assign_room(self):
