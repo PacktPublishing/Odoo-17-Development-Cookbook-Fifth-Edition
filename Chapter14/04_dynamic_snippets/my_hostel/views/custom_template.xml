@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Example: custom_template.xml -->
+    <template id="custom_template" name="Custom Template">
+        <t t-call="website.layout">
+            <t t-set="page_title">Custom Page</t>
+            <!-- Your content here -->
+            <div class="custom-content">
+                <h1>Welcome to my custom page!</h1>
+                <p>This is a custom template created in Odoo.</p>
+            </div>
+        </t>
+    </template>
+</odoo>

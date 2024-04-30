@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+   <t t-name="CategColorField">
+        <div>
+            <t t-foreach="totalColors" t-as="color" t-key="color">
+                <span t-attf-class="o_color_pill o_color_#{color} 
+                      {{props.record.data[props.name] == color ? 'active': ''}}" 
+                      t-att-data-value="color"
+                      t-on-click="() => this.clickPill(color)"
+                      t-on-mouseover.prevent="categInfo"/>
+            </t>
+            <div class="categInformationPanel"/>
+        </div>
+    </t>
+    <t t-name="CategInformation">
+        <div t-attf-class="categ_info o_color_pill o_color_#{value}">
+            <t t-if="value == 1">
+                Single Room With AC<br/>
+                <ul>
+                    <li>
+                        Small Dressing Table
+                    </li>
+                    <li>
+                        Small Bedside Table
+                    </li>
+                    <li>
+                        Small Writing Table
+                    </li>
+                    <li>
+                        Attached Bathroom
+                    </li>
+                </ul>
+            </t>
+            <t t-if="value == 2">
+                Single Room With None AC<br/>
+                <ul>
+                    <li>
+                        Small Dressing Table
+                    </li>
+                    <li>
+                        Small Bedside Table
+                    </li>
+                    <li>
+                        Small Writing Table
+                    </li>
+                    <li>
+                        Attached Bathroom
+                    </li>
+                </ul>
+            </t>
+            <t t-if="value == 3">
+                King Double Room With AC<br/>
+                <ul>
+                    <li>
+                        King Size Double Bed
+                    </li>
+                    <li>
+                        Small Dressing Table
+                    </li>
+                    <li>
+                        Small Bedside Table
+                    </li>
+                    <li>
+                        Small Writing Table
+                    </li>
+                    <li>
+                        TV
+                    </li>
+                    <li>
+                        Small Fridge
+                    </li>
+                    <li>
+                        Attached Bathroom
+                    </li>
+                </ul>
+            </t>
+            <t t-if="value == 4">
+                King Double Room With None AC<br/>
+                <ul>
+                    <li>
+                        King Size Double Bed
+                    </li>
+                    <li>
+                        Small Dressing Table
+                    </li>
+                    <li>
+                        Small Bedside Table
+                    </li>
+                    <li>
+                        Small Writing Table
+                    </li>
+                    <li>
+                        TV
+                    </li>
+                    <li>
+                        Small Fridge
+                    </li>
+                    <li>
+                        Attached Bathroom
+                    </li>
+                </ul>
+            </t>
+            <t t-if="value == 5">
+                Queen Double Room With AC<br/>
+                <ul>
+                    <li>
+                        Queen Size Double Bed
+                    </li>
+                    <li>
+                        Small Dressing Table
+                    </li>
+                    <li>
+                        Small Bedside Table
+                    </li>
+                    <li>
+                        Small Writing Table
+                    </li>
+                    <li>
+                        TV
+                    </li>
+                    <li>
+                        Small Fridge
+                    </li>
+                    <li>
+                        Attached Bathroom
+                    </li>
+                </ul>
+            </t>
+            <t t-if="value == 6">
+                Queen Double Room With None AC<br/>
+                <ul>
+                    <li>
+                        Queen Size Double Bed
+                    </li>
+                    <li>
+                        Small Dressing Table
+                    </li>
+                    <li>
+                        Small Bedside Table
+                    </li>
+                    <li>
+                        Small Writing Table
+                    </li>
+                    <li>
+                        TV
+                    </li>
+                    <li>
+                        Small Fridge
+                    </li>
+                    <li>
+                        Attached Bathroom
+                    </li>
+                </ul>
+            </t>
+        </div>
+    </t>
+    <t t-name="CategInformationCustom" t-inherit="my_hostel.CategInformation"
+        t-inherit-mode="extension">
+        <xpath expr='//t[@t-if="value == 1"]' position="before">
+            <i class="fa fa-info-circle" aria-hidden="true"></i>
+        </xpath>
+        <xpath expr="//div" position="inside">
+            <div class="text-center" 
+                 style="color:gray;background: white;padding:3px;padding: 5px;border-radius: 5px;">
+                Total Booked Rooms: <t t-esc="widget.categoryInfo[value] or 0"/>
+            </div>
+        </xpath>
+    </t>
+</templates>

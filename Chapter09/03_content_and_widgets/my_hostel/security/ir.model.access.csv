@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hostel,hostel.room.user,model_hostel_room,group_hostel_user,1,0,0,0
+access_hostel_manager,hostel.room.manager,model_hostel_room,group_hostel_manager,1,1,1,1

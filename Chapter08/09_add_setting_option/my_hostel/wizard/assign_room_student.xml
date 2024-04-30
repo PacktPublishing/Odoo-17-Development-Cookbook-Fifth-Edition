@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<record id='assign_room_student_wizard_form' model='ir.ui.view'>
+    <field name='name'>assign room student wizard form view</field>
+    <field name='model'>assign.room.student.wizard</field>
+    <field name='arch' type='xml'>
+        <form string="Assign Room">
+            <sheet>
+                <group>
+                    <field name='room_id'/>
+                </group>
+            </sheet>
+            <footer>
+                <button string='Update' name='add_room_in_student' class='btn-primary' type='object'/>
+                <button string='Cancel' class='btn-default' special='cancel'/>
+            </footer>
+        </form>
+    </field>
+</record>
+
+<record model="ir.actions.act_window" id="action_assign_room_student_wizard">
+    <field name="name">Assign Room</field>
+    <field name="res_model">assign.room.student.wizard</field>
+    <field name="view_mode">form</field>
+    <field name="target">new</field>
+</record>
+
+</odoo>

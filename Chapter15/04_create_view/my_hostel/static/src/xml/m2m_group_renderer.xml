@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="M2mGroupRenderer" owl="1">
+        <div class="row ml16 mr16">
+            <div t-foreach="groups" t-as="group" class="col-3" t-key="group">
+                <t t-set="group_data" t-value="groups[group]" />
+                <div class="card mt16">
+                    <img class="card-img-top"
+                         t-attf-src="/web/image/#{group_data.model}/#{group}/image" 
+                         style="height: 300px;"/>
+                    <div class="card-body">
+                        <h5 class="card-title mt8">
+                            <t t-esc="group_data['name']"/>
+                        </h5>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <t t-foreach="group_data['children']" t-as="child" t-key="child.id">
+                            <li class="list-group-item">
+                                <i class="fa fa-user"/><t t-esc="child.name"/>
+                            </li>
+                        </t>
+                    </ul>
+                    <div class="card-body">
+                        <a href="#" class="btn btn-sm btn-primary o_primay_button" 
+                           t-att-data-group="group"
+                           t-on-click="() => this.onClickViewButton(group_data)">View</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

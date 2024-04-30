@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="base.main_company" model="res.company">
+        <field name="name">Packt publishing</field>
+    </record>
+
+    <record id="hostel_room_1" model="hostel.room">
+        <field name="name"> Hostel Room 01 </field>
+    </record>
+
+</odoo>

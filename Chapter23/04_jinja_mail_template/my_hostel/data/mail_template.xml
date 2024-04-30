@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="assign_room_to_student" model="mail.template">
+        <field name="name">Assign Room To Student</field>
+        <field name="model_id" ref="my_hostel.model_hostel_student"/>
+        <field name="email_from">{{ (object.room_id.create_uid.email) }}</field>
+        <field name="email_to">{{ (object.email) }}</field>
+        <field name="subject">Assign Room</field>
+        <field name="body_html" type="html">
+            <div style="margin: 0px; padding: 0px;">
+                <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                    Dear <t t-out="object.name"></t>,
+                    <br/><br/>
+                    <p>You have been assigned hostel 
+                        <b><t t-out="object.hostel_id.name"></t></b> and room no <t t-out="object.room_id.room_no"></t>.
+                    <br/>
+                    Your admission date in a hostel is <b style="color:red;"><t t-out="format_date(object.admission_date)"></t>.</b>
+                    </p>
+                    <br/>
+
+                    <p>Best regards,
+                    <br/><t t-out="object.hostel_id.name"></t></p>
+                </p>
+            </div>
+        </field>
+    </record>
+</odoo>

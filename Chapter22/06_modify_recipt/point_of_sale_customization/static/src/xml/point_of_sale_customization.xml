@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="PosDiscountButton">
+        <span class="control-button btn btn-light rounded-0 fw-bolder"
+              t-on-click="() => this.onClick()">
+            <i class="fa fa-gift"></i>
+            <span>5%</span>
+            <span>Discount</span>
+        </span>
+    </t>
+
+    <t t-name="PosLastOrderButton">
+        <span class="control-button btn btn-light rounded-0 fw-bolder"
+              t-on-click="() => this.onClick()">
+            <i class="fa fa-shopping-cart"></i>Making RPC calls
+            <span></span>
+            <span>Last Orders</span>
+        </span>
+    </t>
+
+    <t t-name="ProductsWidget" t-inherit="point_of_sale.ProductsWidget"
+        t-inherit-mode="extension">
+        <xpath expr="//ProductCard" position="attributes">
+            <attribute name="standard_price">
+                pos.env.utils.formatCurrency(product.get_display_price() - product.standard_price)
+            </attribute>
+        </xpath>
+    </t>
+
+    <t t-name="ProductCard" t-inherit="point_of_sale.ProductCard"
+        t-inherit-mode="extension">
+        <xpath expr="//span[hasclass('price-tag')]" position="after">
+            <span t-if="props.standard_price"
+                  class="sale_margin py-1 fw-bolder">
+                <t t-esc="props.standard_price"/>
+            </span>
+        </xpath>
+    </t>
+
+    <t t-name="OrderReceipt"
+       t-inherit="point_of_sale.OrderReceipt"
+       t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('pos-receipt')]//div[hasclass('before-footer')]" position="before">
+            <div style="text-align:center;" t-if="props.data.saved_amount">
+                <br/>
+                <div >
+                    You saved
+                    <t t-esc="props.data.saved_amount"/>
+                    on this order.
+                </div>
+            </div>
+        </xpath>
+    </t>
+
+</templates>

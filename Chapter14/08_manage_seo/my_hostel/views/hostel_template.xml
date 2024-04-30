@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="hostels" name="hostel">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="oe_structure">
+                    <section class="pt32 pb32 bg-secondary oe_custom_bg">
+                        <div class="container text-center">
+                            <h1> Hostels</h1>
+                        </div>
+                    </section>
+                </div>
+        
+                <div class="container">
+                    <t t-foreach="hostels" t-as="hostel">
+                        <div t-attf-class="card mt-3 #{'bg-info' if hostel_odd else ''}" >
+                            <div class="card-body" id="card_body">
+                                <h3 t-field="hostel.name"/>
+                                <div t-field="hostel.hostel_code" class="text-muted"/>
+                                <a t-attf-href="/hostels/#{hostel.id}" class="btn btn-primary btn-sm">
+                                    <i class="fa fa-building"/>
+                                        Hostel Detail
+                                </a>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+    
+    <!-- Hostel Detail Page -->
+    <template id="hostel_detail" name="Hostel Detail">
+        <t t-call="website.layout">
+            <div class="container">
+                <div class="row mt16">
+                    <div class="col-5">
+                        <span t-field="hostel.image" t-options="{'widget': 'image', 'class': 'mx-auto d-block img-thumbnail'}"/>
+                    </div>
+                    <div class="offset-1 col-6">
+                        <h1 t-field="hostel.name"/>
+                        <div t-field="hostel.hostel_code" class="text-muted"/>
+                    </div>
+                    <div><b>Type:</b> <span t-field="hostel.type"/></div>
+                    <div><b>Floors:</b> <span t-field="hostel.hostel_floors"/></div>
+                </div>
+            </div>
+            <div t-field="hostel.description"/>
+        </t>
+    </template>
+</odoo>

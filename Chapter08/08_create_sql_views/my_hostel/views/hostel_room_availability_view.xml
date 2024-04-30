@@ -1,0 +1,25 @@
+<odoo>
+
+    <record id='hostel_room_availability_action' model='ir.actions.act_window'>
+        <field name="name">Hostel Room Availability</field>
+        <field name="res_model">hostel.room.availability</field>
+        <field name="view_mode">pivot</field>
+    </record>
+
+    <menuitem name="Hostel Room Availability" id="hostel_room_availability_menu" parent="hostel_main_menu" action="hostel_room_availability_action"/>
+
+    <!-- pivot View -->
+    <record id="hostel_room_availability_view_pivot" model="ir.ui.view">
+        <field name="name">hostel.room.availability.pivot</field>
+        <field name="model">hostel.room.availability</field>
+        <field name="arch" type="xml">
+            <pivot string="Availability Analysis" disable_linking="True">
+                <field name="room_id" type="row"/>
+                <field name="student_per_room" type="measure"/>
+                <field name="availability" type="measure"/>
+                <field name="amount" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+</odoo>

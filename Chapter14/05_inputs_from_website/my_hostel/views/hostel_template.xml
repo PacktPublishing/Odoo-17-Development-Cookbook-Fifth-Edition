@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="hostel_detail" name="Hostel Detail">
+        <t t-call="website.layout">
+            <div class="container">
+                <div class="row mt16">
+                    <div class="col-5">
+                        <span t-field="hostel.image" t-options="{
+                            'widget': 'image',
+                            'class': 'mx-auto d-block img-thumbnail'}"/>
+                    </div>
+                    <div class="offset-1 col-6">
+                        <h1 t-field="hostel.name"/>
+                        <p t-esc="hostel.hostel_rating"></p>
+                        <t t-if="hostel.hostel_code">
+                            <div t-field="hostel.hostel_code"
+                            class="text-muted"/>
+                        </t>
+                        <b class="mt8"> State: </b>
+                        <ul>
+                            <li t-foreach="hostel.state_id" t-as="state">
+                                <span t-esc="state.name" />
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div t-field="hostel.description"/>
+        </t>
+    </template>
+</odoo>

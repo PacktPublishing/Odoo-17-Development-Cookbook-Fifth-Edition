@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="PosDiscountButton">
+        <span class="control-button btn btn-light rounded-0 fw-bolder"
+              t-on-click="() => this.onClick()">
+            <i class="fa fa-gift"></i>
+            <span>5%</span>
+            <span>Discount</span>
+        </span>
+    </t>
+
+    <t t-name="PosLastOrderButton">
+        <span class="control-button btn btn-light rounded-0 fw-bolder"
+              t-on-click="() => this.onClick()">
+            <i class="fa fa-shopping-cart"></i>Making RPC calls
+            <span></span>
+            <span>Last Orders</span>
+        </span>
+    </t>
+
+</templates>

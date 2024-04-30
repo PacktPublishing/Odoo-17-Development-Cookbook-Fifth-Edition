@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id='hostel_room_category_action' model='ir.actions.act_window'>
+        <field name="name">Hostel Room Categories</field>
+        <field name="res_model">hostel.room.category</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Hostel Room Categories" id="hostel_room_category_menu" parent="hostel_base_menu" action="hostel_room_category_action"/>
+
+    <!-- Form View -->
+    <record id="hostel_room_category_view_form" model="ir.ui.view">
+        <field name="name">Hostel Room Categories Form</field>
+        <field name="model">hostel.room.category</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                    </group>
+                    <group>
+                        <field name="parent_id"/>
+                    </group>
+                </group>
+                <group>
+                    <field name="child_ids"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree(list) View -->
+    <record id="hostel_room_category_view_tree" model="ir.ui.view">
+        <field name="name">Hostel Room List</field>
+        <field name="model">hostel.room.category</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+</odoo>

@@ -20,7 +20,7 @@ $ mkdir src local bin filestore logs
 
 ### Clone Odoo and install the requirements:
 ```bash
-git clone -b 16.0 --single-branch --depth 1 https://github.com/odoo/odoo.git src/odoo
+git clone -b 17.0 --single-branch --depth 1 https://github.com/odoo/odoo.git src/odoo
 ```
 
 ```bash
