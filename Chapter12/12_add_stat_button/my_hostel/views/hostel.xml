@@ -19,7 +19,7 @@
             <form string="Hostel">
                 <sheet>
                     <div class="oe_button_box" name="button_box">
-                        <button class="oe_stat_button" name="%(action_hostel_room)d" type="action" icon="fa-building" context="{'search_default_hostel_id': active_id}">
+                        <button class="oe_stat_button" name="%(my_hostel.action_hostel_room)d" type="action" icon="fa-building" context="{'search_default_hostel_id': active_id}">
                             <field string="Rooms" name="rooms_count" widget="statinfo"/>
                         </button>
                     </div>
@@ -81,8 +81,6 @@
             </p>
         </field>
     </record>
-
-    <menuitem id="hostel_main_menu" name="Hostel" sequence="1"/>
 
     <menuitem id="hostel_type_menu" name="Hostel" parent="hostel_main_menu"
         action="my_hostel.action_hostel" groups="my_hostel.group_hostel_manager"
